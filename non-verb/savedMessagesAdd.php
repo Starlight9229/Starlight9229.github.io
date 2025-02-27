@@ -29,8 +29,8 @@ if (isset($_POST['messages'])) {
 
 <head>
     <title>Starlight's non-verbal writing page</title>
-    <link rel="stylesheet" href="http://citadel.ghs.vic.edu.au/CAL0022/non-verb/bootstrap-non-verb.css">
-    <link rel="stylesheet" href="http://citadel.ghs.vic.edu.au/CAL0022/non-verb/style-non-verb.css">
+    <link rel="stylesheet" href="https://starlight9229.github.io/non-verb/bootstrap-non-verb.css">
+    <link rel="stylesheet" href="https://starlight9229.github.io/non-verb/style-non-verb.css">
 </head>
 
 <body>

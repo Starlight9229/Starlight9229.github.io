@@ -40,13 +40,13 @@ $showTitles = "<table style='background-image: linear-gradient(-90deg, rgb(23, 7
 
 <head>
     <title>Starlight's non-verbal writing page</title>
-    <script src="/CAL0022/assets/scripts/bootstrap.bundle.js"></script>
-    <link rel="stylesheet" href="/CAL0022/assets/stylesheets/bootstrap-non-verb.css">
-    <link rel="stylesheet" href="/CAL0022/assets/stylesheets/style-non-verb.css">
+    <script src="../assets/scripts/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="../assets/stylesheets/bootstrap-non-verb.css">
+    <link rel="stylesheet" href="../assets/stylesheets/style-non-verb.css">
 </head>
 
 <body>
-    <div w3-include-html="/CAL0022/assets/addons/navbar.html"></div>
+    <div w3-include-html="../assets/addons/navbar.html"></div>
 
     <form method="POST" autocomplete="off">
         <div class="indent">
@@ -56,7 +56,7 @@ $showTitles = "<table style='background-image: linear-gradient(-90deg, rgb(23, 7
                     name="messages" required maxlength="152" autofocus></input>
                 <button type="submit" class="btn btn-custom-save" id="button-addon2">Save Message</button>
             </div>
-            <a href="http://citadel.ghs.vic.edu.au/CAL0022/non-verb/savedMessagesDeleteAll.php"><button type="button"
+            <a href="https://starlight9229.github.io/non-verb/savedMessagesDeleteAll.php"><button type="button"
                     class="btn btn-custom-clear">Clear All Messages</button></a>
         </div>
 

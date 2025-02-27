@@ -6,7 +6,7 @@ echo $id;
 
 $query = "DELETE FROM `messages` WHERE `id` = '$id'";
 if ($result = mysqli_query($link, $query)) {
-    header("Location:http://citadel.ghs.vic.edu.au/CAL0022/non-verb/");
+    header("https://starlight9229.github.io/CAL0022/non-verb/");
     echo $query;
 } else {
     echo "bad";
