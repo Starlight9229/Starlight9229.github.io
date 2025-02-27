@@ -13,10 +13,37 @@ listSaves = {0:Modifiable, 1:AllFren, 2:SchoolFrenGroup}
 listSaveSelect = 2
     #amount of peices of text it picks
 amountPick = 1
-
+amountNumber = 1
+lowNumber = 1
+highNumber = 10
+numStep = 1
     #will it remove picked text after each go (true or false, case sensitive)
 rouletteMode = False
     #number settings
+def manyRandInt(
+    lowNumber: int = 1,
+    highNumber: int = 10,
+    amountNumber: int = 2,
+    numStep: int = 1
+):
+    import random
+    allNum = []
+    trueAllNum = {}
+    repeatNum = 0
+    for i in range(1, (amountNumber + 1)):
+             #number randomiser
+        mystery = random.randrange(lowNumber, highNumber, numStep)
+        print(mystery)
+        allNum.append(mystery)
+
+    for i in range(lowNumber, (highNumber + 1)):
+        tempCounter = allNum.count((lowNumber) + repeatNum)
+        if tempCounter != 0:
+            trueAllNum.update({(lowNumber + repeatNum) : tempCounter})
+    
+        repeatNum += 1
+    return(trueAllNum)
+
 def runNumberGen(event):
     
         #amount of numbers that get chosen
