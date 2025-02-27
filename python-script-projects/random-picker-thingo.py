@@ -53,7 +53,7 @@ def runNumberGen(event):
     lowNumber = document.querySelector('#lowNum')
         #highest number possible
     highNumber = document.querySelector('#highNum')
-    highNumPlusOne = highNumber + 1
+    highNumPlusOne = int(highNumber) + 1
         #number gap between options for random numbers (e.g: 1 = all numbers, 10 = multiples of 10)
     numStep = document.querySelector('#numStep')
 #don't change these variables
