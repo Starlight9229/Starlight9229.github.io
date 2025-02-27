@@ -2,8 +2,8 @@ body {
   background-image: var(--bs-gradient);
 }
 .indent {
-  margin-left: 10%;
-  margin-right: 10%;
+  margin-left: 1%;
+  margin-right: 1%;
   max-width: 85%;
 }
 h2 {
