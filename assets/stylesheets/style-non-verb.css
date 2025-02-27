@@ -2,8 +2,8 @@ body {
   background-image: var(--bs-gradient);
 }
 .indent {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 10%;
+  margin-right: 10%;
 }
 h2 {
   font-size: 75%;
@@ -60,13 +60,13 @@ a {
     rgb(69, 176, 222)
   );
   background-color: rgb(69, 176, 222);
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5%;
+  margin-right: 5%;
   border-radius: 20px;
-  padding-top: 25px;
-  padding-left: 20px;
-  padding-bottom: 25px;
-  padding-right: 25px;
+  padding-top: 12%;
+  padding-left: 10%;
+  padding-bottom: 12%;
+  padding-right: 12%;
   color: rgb(71, 31, 66);
 }
 .big-text {

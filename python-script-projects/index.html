@@ -11,12 +11,22 @@
 
   <body class="gradient-custom">
     <div w3-include-html="../assets/addons/navbar.html"></div>
-    <div class="input-group mb-3">
+    <div class="input-group mb-3 indent">
     <input type="text" id="ask" placeholder="ask a question here" class="form-control darkbluelight-dark-gradient-bg-only"/>
     <button py-click="run8ball" class="btn btn-custom-save">Ask</button>
     </div>
-    <div id="8ballreply"></div>
+    <div id="8ballreply" class="cyandark-light-gradient"></div>
     <script type="py" src="pretty-much-a-magic-8-ball.py"></script>
+    <div> </div>
+    <div> </div>
+    <div class="input-group mb3 indent">
+      <input type="number" id="amountNum" placeholder="amount of numbers to pick here" class="form-control darkbluelight-dark-gradient-bg-only"/>
+      <input type="number" id="lowNum" placeholder="lowest number possible here" class="form-control darkbluelight-dark-gradient-bg-only"/>
+      <input type="number" id="highNum" placeholder="highest number possible here" class="form-control darkbluelight-dark-gradient-bg-only"/>
+      <input type="number" id="numStep" placeholder="gap between possible numbers here" class="form-control darkbluelight-dark-gradient-bg-only"/>
+      <button py-click="runNumberGen" class="btn btn-custom-save">Generate Numbers</button>
+    </div>
+    <div id="numOut" class="cyandark-light-gradient"></div>
     <script>
         includeHTML();
         function includeHTML() {

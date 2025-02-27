@@ -27,5 +27,5 @@ def run8ball(event):
         reply = goodOptions[intensity]
     else:
         reply = badOptions[intensity]
-        reply_div = document.querySelector("#8ballreply")
+        reply_div = document.querySelector('#8ballreply')
         reply_div.innerText = reply
