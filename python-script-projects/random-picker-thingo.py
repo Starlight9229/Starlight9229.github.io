@@ -1,7 +1,6 @@
 #imports
 import random
 import math
-from modules import randPick
 from pyscript import document
 #variable configuration
     #possible things it can pick (must be a string/text)
@@ -66,7 +65,7 @@ def runNumberGen(event):
     savePick = canPick.copy()
 #where the magic happens for numbers
     #repeating loop
-    numbersAre = "The numbers are: " + randPick.manyRandInt(lowNumber, highNumber, amountNumber, numStep)
+    numbersAre = "The numbers are: " + manyRandInt(lowNumber, highNumber, amountNumber, numStep)
     numberOut = document.querySelector('#numOut')
     numberOut.innterText = numbersAre
 
