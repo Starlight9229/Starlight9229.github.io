@@ -65,7 +65,24 @@ def runNumberGen(event):
     savePick = canPick.copy()
 #where the magic happens for numbers
     #repeating loop
-    numbersAre = "The numbers are: " + manyRandInt(lowNumber, highNumber, amountNumber, numStep)
+    import random
+    allNum = []
+    trueAllNum = {}
+    repeatNum = 0
+    for i in range(1, (amountNumber + 1)):
+             #number randomiser
+        mystery = random.randrange(lowNumber, highNumber, numStep)
+        print(mystery)
+        allNum.append(mystery)
+
+    for i in range(lowNumber, (highNumber + 1)):
+        tempCounter = allNum.count((lowNumber) + repeatNum)
+        if tempCounter != 0:
+            trueAllNum.update({(lowNumber + repeatNum) : tempCounter})
+    
+        repeatNum += 1
+    
+    numbersAre = "The numbers are: " + trueAllNum
     numberOut = document.querySelector('#numOut')
     numberOut.innterText = numbersAre
 
