@@ -53,6 +53,7 @@ def runNumberGen(event):
     lowNumber = document.querySelector('#lowNum')
         #highest number possible
     highNumber = document.querySelector('#highNum')
+    highNumPlusOne = highNumber + 1
         #number gap between options for random numbers (e.g: 1 = all numbers, 10 = multiples of 10)
     numStep = document.querySelector('#numStep')
 #don't change these variables
@@ -69,13 +70,13 @@ def runNumberGen(event):
     allNum = []
     trueAllNum = {}
     repeatNum = 0
-    for i in range(1, (amountNumber + 1)):
+    for i in range(0, amountNumber):
              #number randomiser
         mystery = random.randrange(lowNumber, highNumber, numStep)
         print(mystery)
         allNum.append(mystery)
 
-    for i in range(lowNumber, (highNumber + 1)):
+    for i in range(lowNumber, highNumPlusOne):
         tempCounter = allNum.count((lowNumber) + repeatNum)
         if tempCounter != 0:
             trueAllNum.update({(lowNumber + repeatNum) : tempCounter})
