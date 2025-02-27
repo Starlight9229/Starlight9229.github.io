@@ -6,16 +6,17 @@
     <link rel="stylesheet" href="../assets/stylesheets/style-non-verb.css" />
     <link rel="stylesheet" href="https://pyscript.net/releases/2025.2.3/core.css">
     <script type="module" src="https://pyscript.net/releases/2025.2.3/core.js"></script>
+    <script src="mini-coi.js" scope="./"></script> 
   </head>
 
   <body class="gradient-custom">
     <div w3-include-html="../assets/addons/navbar.html"></div>
     <div class="input-group mb-3">
     <input type="text" id="ask" placeholder="ask a question here" class="form-control darkbluelight-dark-gradient-bg-only"/>
-    <button py-click="run8ball" class="btn btn-custom-save"  id="button-addon2">Ask</button>
+    <button py-click="run8ball" class="btn btn-custom-save">Ask</button>
     </div>
     <div id="8ballreply"></div>
-    <script type="py" src="pretty-much-a-magic-8-ball.py" config="pyscript.json"></script>
+    <script type="py" src="pretty-much-a-magic-8-ball.py"></script>
     <script>
         includeHTML();
         function includeHTML() {
