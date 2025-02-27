@@ -17,6 +17,7 @@ def decide():
     
 #where the magic happens
 def run8ball(event):
+    import random
     repeatNum = 0
     asktemp = document.querySelector('#ask')
     ask = asktemp.value
