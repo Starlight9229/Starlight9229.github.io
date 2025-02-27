@@ -4,6 +4,7 @@ body {
 .indent {
   margin-left: 10%;
   margin-right: 10%;
+  max-width: 85%;
 }
 h2 {
   font-size: 75%;
