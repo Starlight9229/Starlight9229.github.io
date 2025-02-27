@@ -1,0 +1,12 @@
+h1{
+    color: red;
+    text-align: center;
+}
+
+table{
+    width: 100%;
+}
+td{
+    width: 50%;
+    min-height: 50vh;
+}

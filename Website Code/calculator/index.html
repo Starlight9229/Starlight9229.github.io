@@ -1,0 +1,102 @@
+<head></head>
+    <title>Starlight's Calculator</title>
+    <script src="/CAL0022/assets/scripts/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="/CAL0022/assets/stylesheets/bootstrap.css">
+    <link rel="stylesheet" href="/CAL0022/assets/stylesheets/styleMain.css">
+</head>
+
+<body>
+  <div w3-include-html="/CAL0022/assets/addons/navbar.html"></div>
+<div class="blue-gradient-bg">
+    <form>
+        <input type="number" id="number1" class="form-control" placeholder="enter first number" num="0" step="0.001"/>
+        <div>
+            
+            <select class="form-select" id="operation">
+              <option>+</option>
+              <option>-</option>
+              <option>x</option>
+              <option>/</option>
+              <option>to the power of</option>
+              <option>square root</option>
+              <option>cubed root</option>
+            </select>
+          </div>
+          <input type="number" id="number2" class="form-control" placeholder="enter second number" min="0" step="0.001"/>
+          <input type="submit" hidden onclick="workOut()"/>
+          <button type="button" class="btn btn-success" onclick="workOut()">Work out question</button>
+    </form>
+    <div>output:</div>
+    <div id="output"></div>
+    hi
+</div>
+<script>
+  includeHTML();
+  function includeHTML() {
+    var z, i, elmnt, file, xhttp;
+    /* Loop through a collection of all HTML elements: */
+    z = document.getElementsByTagName("*");
+    for (i = 0; i < z.length; i++) {
+      elmnt = z[i];
+      /*search for elements with a certain atrribute:*/
+      file = elmnt.getAttribute("w3-include-html");
+      if (file) {
+        /* Make an HTTP request using the attribute value as the file name: */
+        xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if (this.readyState == 4) {
+            if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+            if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+            /* Remove the attribute, and call this function once more: */
+            elmnt.removeAttribute("w3-include-html");
+            includeHTML();
+          }
+        }
+        xhttp.open("GET", file, true);
+        xhttp.send();
+        /* Exit the function: */
+        return;
+      }
+    }
+  }
+  </script>
+<script>
+let number1 = '0';
+let number2 = '0';
+let operator = "";
+function workOut() {
+    event.preventDefault();
+    number1 = Number(document.getElementById("number1").value);
+    number2 = Number(document.getElementById("number2").value);
+    operator = document.getElementById("operation").value;
+    console.log(number2);
+    console.log(operator);
+    if(operator == "+") {
+        output = (number1 + number2);
+    }
+    if(operator == "-") {
+        output = (number1 - number2);
+    }
+    if(operator == "x") {
+        output = (number1 * number2);
+    }
+    if(operator == "/") {
+        output = (number1 / number2);
+    }
+    if(operator == "to the power of"){
+        output = (number1 ** number2);
+    }
+    if(operator == "square root") {
+        output = "Square root of number 1: " + Math.sqrt(number1) + "<br>Square root of number 2: " + Math.sqrt(number2);
+    }
+    if(operator == "cubed root") {
+        output = "Cubed root of number 1: " + Math.cbrt(number1) + "<br>Cubed root of number 2: " + Math.cbrt(number2)
+    }
+    document.getElementById("output").innerHTML = Number(output).toFixed(3);
+}
+
+
+
+</script>
+</body>
+</html>
