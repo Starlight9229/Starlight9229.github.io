@@ -10,8 +10,10 @@
 
   <body class="gradient-custom">
     <div w3-include-html="../assets/addons/navbar.html"></div>
-    <input type="text" id="ask" placeholder="ask a question here"/>
-    <button py-click="run8ball">Ask</button>
+    <div class="input-group mb-3">
+    <input type="text" id="ask" placeholder="ask a question here" class="form-control darkbluelight-dark-gradient-bg-only"/>
+    <button py-click="run8ball" class="btn btn-custom-save"  id="button-addon2">Ask</button>
+    </div>
     <script type="py" src="./pretty-much-a-magic-8-ball.py" config="./pyscript.json"></script>
     <script>
         includeHTML();
