@@ -22,12 +22,10 @@ def run8ball(event):
     ask = asktemp.value
     intensity = random.randint(0, 10)
     yesOrNo = random.randint(0,1)
-    if ask == "dev":
-        print("Our almighty creator, we shall tell you our random decision: intensity: ",  intensity, ", yes or no: ", yesOrNo)
+    
+    if yesOrNo:
+        reply = goodOptions[intensity]
     else:
-        if yesOrNo:
-            reply = goodOptions[intensity]
-        else:
-            reply = badOptions[intensity]
+        reply = badOptions[intensity]
         reply_div = document.querySelector("#8ballreply")
         reply_div.innerText = reply
