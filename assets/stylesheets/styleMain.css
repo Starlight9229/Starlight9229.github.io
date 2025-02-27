@@ -1,0 +1,70 @@
+body{
+background-image: var(--bs-gradient);
+color: cyan;
+}
+
+h1{
+    font-size:300%;
+    color: rgb(43, 192, 226);
+    text-align: center;
+    margin-top:20px;
+    margin-bottom: 20px;
+}
+h2{
+    text-align: center;
+}
+.dragon{
+    width:100%;
+
+}
+.favlist{
+    font-size: 150%;
+    color: yellow;
+    text-align: left;
+    margin-left: 10px;
+}
+
+.thiscell{
+    width: 40%;
+}
+
+.link{
+    color:rgb(224, 236, 255);
+}
+a{
+    color:rgb(216, 171, 57);
+}
+.textblue{
+    color:rgb(190, 210, 98);
+}
+.gradient-custom{
+    background-image: var(--bs-gradient);
+}
+.blue-gradient-bg{
+    background-image: var(--bs-blue-gradient);
+    width: 60%;
+    border-radius: 20px;
+    padding: 25px;
+    margin-left: 20%;
+    color: darkgoldenrod;
+    margin-bottom: 18px;
+    margin-top: 17px;
+    
+}
+.gold-gradient-bg{
+    background-image: linear-gradient(90deg, rgb(206, 218, 148),rgb(200, 164, 80));
+    width: 95%;
+    border-radius: 20px;
+    padding: 15px;
+    margin-left: 2.5%;
+    color: rgb(154, 25, 224)
+}
+.darkgoldtext{
+    color:darkgoldenrod;
+}
+.gold-gradient-link{
+    color: rgb(19, 111, 181);
+    text-decoration-line: underline;
+    
+
+}

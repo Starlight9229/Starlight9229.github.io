@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <script src="/CAL0022/assets/scripts/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="/CAL0022/assets/stylesheets/bootstrapGuess.css" />
+    <link rel="stylesheet" href="/CAL0022/assets/stylesheets/styleGuess.css" />
+
+    <title>Starlight's Number Game</title>
+  </head>
+  <body class="gradient-custom">
+    <div w3-include-html="/CAL0022/assets/addons/navbar.html"></div>
+    <h1>Starlight's Number Game</h1>
+
+    <div id="startGame" class="container">
+      <form>
+        <div class="form-group">
+          <label for="getQuestions">How many questions do you want?</label>
+          <input
+            type="number"
+            class="form-control startgameinput"
+            id="getQuestions"
+            placeholder="Enter number"
+            value="1"
+          />
+        </div>
+
+        <div class="form-group">
+          <label for="getLargestNumber"
+            >What is the largest number possible in the questions?</label
+          >
+          <input
+            type="number"
+            class="form-control startgameinput"
+            id="getLargestNumber"
+            placeholder="Enter number"
+            value="10"
+          />
+        </div>
+
+        <fieldset>
+          <div id="getSelectedMode" class="startgameinputmode">
+            <legend class="mt-4">Select a Mode to play</legend>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="optionsRadios"
+                id="optionsRadios1"
+                value="Multiplication"
+                checked=""
+              />
+              <label class="form-check-label" for="optionsRadios1">
+                Multiplication
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="optionsRadios"
+                id="optionsRadios2"
+                value="Addition"
+              />
+              <label class="form-check-label" for="optionsRadios2">
+                Addition
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="optionsRadios"
+                id="optionsRadios3"
+                value="Subtraction"
+              />
+              <label class="form-check-label" for="optionsRadios3">
+                Subtraction
+              </label>
+            </div>
+            <div class="form-check">
+              <input
+                class="form-check-input"
+                type="radio"
+                name="optionsRadios"
+                id="optionsRadios4"
+                value="Number Guess"
+              />
+              <label class="form-check-label" for="optionsRadios4">
+                Number Guess
+              </label>
+            </div>
+          </div>
+        </fieldset>
+        <button class="btn btn-primary" onclick="startGame()">Start</button>
+      </form>
+      <div id="errorMessage"></div>
+    </div>
+    <div id="playGame">
+      <h2 id="playHeading"></h2>
+      <div id="showQuestion"></div>
+      <form>
+        <input type="number" id="userAnswer" class="form-control" /><br />
+        <input type="submit" hidden onclick="checkAnswer()" \ />
+      </form>
+      <button
+        id="checkButton"
+        type="button"
+        class="btn btn-success"
+        onclick="checkAnswer()"
+      >
+        Enter Answer
+      </button>
+      <div id="showFeedback" class="verticalSpace-10px"></div>
+    </div>
+    <div id="gameOver" class="gameOverSpace">
+      <h2>Game End</h2>
+      <div id="finalScore"></div>
+      <button
+        type="button"
+        class="btn btn-success gap-boottom-20px"
+        onclick="newGame()"
+      >
+        Play Again
+      </button>
+    </div>
+    <script>
+      includeHTML();
+      function includeHTML() {
+        var z, i, elmnt, file, xhttp;
+        /* Loop through a collection of all HTML elements: */
+        z = document.getElementsByTagName("*");
+        for (i = 0; i < z.length; i++) {
+          elmnt = z[i];
+          /*search for elements with a certain atrribute:*/
+          file = elmnt.getAttribute("w3-include-html");
+          if (file) {
+            /* Make an HTTP request using the attribute value as the file name: */
+            xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+              if (this.readyState == 4) {
+                if (this.status == 200) {elmnt.innerHTML = this.responseText;}
+                if (this.status == 404) {elmnt.innerHTML = "Page not found.";}
+                /* Remove the attribute, and call this function once more: */
+                elmnt.removeAttribute("w3-include-html");
+                includeHTML();
+              }
+            }
+            xhttp.open("GET", file, true);
+            xhttp.send();
+            /* Exit the function: */
+            return;
+          }
+        }
+      }
+      </script>
+    <script>
+      document.getElementById("playGame").style.display = "none";
+      document.getElementById("gameOver").style.display = "none";
+      numberofQuestions = 1;
+      largestNumber = 10;
+      readyToPlay = true;
+      errorMessage = "";
+      let firstNum = 0;
+      let secondNum = 0;
+      let selectedMode = "";
+      let score = 0;
+      function newGame() {
+        document.getElementById("playGame").style.display = "none";
+        document.getElementById("gameOver").style.display = "none";
+        document.getElementById("startGame").style.display = "block";
+        numberofQuestions = 1;
+        largestNumber = 10;
+        readyToPlay = true;
+        errorMessage = "";
+        firstNum = 0;
+        secondNum = 0;
+        selectedMode = "";
+        score = 0;
+      }
+      function consolelog(text) {
+        event.preventDefault();
+        console.log(text);
+      }
+      function startGame() {
+        event.preventDefault();
+        errorMessage = "";
+        readyToPlay = true;
+
+        console.log("game has started");
+        numberofQuestions = document.getElementById("getQuestions").value;
+        totalQuestions = document.getElementById("getQuestions").value;
+        console.log(numberofQuestions);
+        largestNumber = document.getElementById("getLargestNumber").value;
+        console.log(largestNumber);
+        selectedMode = document.querySelector(
+          "input[type = radio]:checked"
+        ).value;
+        console.log(selectedMode);
+        if (numberofQuestions < 1) {
+          errorMessage =
+            errorMessage +
+            "<div class='alert alert-warning' role='alert'>You must enter a number of questions!</div>";
+          readyToPlay = false;
+        }
+        if (numberofQuestions > 25) {
+          errorMessage =
+            errorMessage +
+            "<div class='alert alert-warning' role='alert'>Max number of questions is 25, enter a number that is 25 or less the the question amount!</div>";
+          readyToPlay = false;
+        }
+        if (largestNumber < 1) {
+          errorMessage =
+            errorMessage +
+            "<div class='alert alert-warning' role='alert'>You must enter a max number!</div>";
+          readyToPlay = false;
+        }
+        if (largestNumber > 1000000) {
+          errorMessage =
+            errorMessage +
+            "<div class='alert alert-warning' role='alert'>Max number for guessing is capped at 1mil, enter a lower number!</div>";
+          readyToPlay = false;
+        }
+        if (selectedMode == "") {
+          errorMessage =
+            errorMessage +
+            "<div class='alert alert-warning' role='alert'>You must select a mode to play!</div>";
+          readyToPlay = false;
+          console.log(selectedMode);
+        }
+        document.getElementById("errorMessage").innerHTML = errorMessage;
+
+        if (readyToPlay == true) {
+          playGame();
+        }
+      }
+
+      function playGame() {
+        console.log("Playing");
+        document.getElementById("startGame").style.display = "none";
+        document.getElementById("playGame").style.display = "block";
+        newQuestion();
+      }
+      function newQuestion() {
+        if (numberofQuestions > 0) {
+          document.getElementById("showFeedback").innerHTML = "";
+          document.getElementById("userAnswer").value = "";
+          firstNum = Math.round(Math.random() * largestNumber);
+          secondNum = Math.round(Math.random() * largestNumber);
+          showQuestiontimes = "What is '" + firstNum + " x " + secondNum + "?'";
+          showQuestionadd = "What is '" + firstNum + " + " + secondNum + "?'";
+          showQuestionsubtract =
+            "What is '" + firstNum + " - " + secondNum + "?'";
+          console.log("first random number is:" + firstNum);
+          console.log("second random number is:" + secondNum);
+          if (selectedMode == "Multiplication") {
+            console.log(showQuestiontimes);
+            showQuestion = showQuestiontimes;
+          }
+          if (selectedMode == "Addition") {
+            console.log(showQuestionadd);
+            showQuestion = showQuestionadd;
+            questionAnswer = firstNum + secondNum;
+          }
+          if (selectedMode == "Subtraction") {
+            console.log(showQuestionsubtract);
+            showQuestion = showQuestionsubtract;
+          }
+          if (selectedMode == "Number Guess") {
+            console.log("Number Guess selected");
+            showQuestion = "pick a number between 1 and " + largestNumber;
+          }
+          document.getElementById("showQuestion").innerHTML = showQuestion;
+          document.getElementById("userAnswer").focus();
+          document.getElementById("playHeading").innerHTML =
+            "Question " +
+            (totalQuestions - numberofQuestions + 1) +
+            " out of " +
+            totalQuestions;
+          numberofQuestions = numberofQuestions - 1;
+        } else {
+          document.getElementById("playGame").style.display = "none";
+          document.getElementById("gameOver").style.display = "block";
+          document.getElementById("finalScore").innerHTML =
+            "You scored " + score + " out of " + totalQuestions + "!";
+        }
+      }
+      function checkAnswer() {
+        event.preventDefault();
+        userAnswer = document.getElementById("userAnswer").value;
+        console.log(userAnswer);
+        if (
+          selectedMode == "Multiplication" &&
+          userAnswer == firstNum * secondNum
+        ) {
+          console.log("multiply answer correct");
+          score = score + 1;
+          document.getElementById("showFeedback").innerHTML =
+            "<div class='alert alert-success' role='alert'>Correct</div>";
+        } else if (
+          selectedMode == "Addition" &&
+          userAnswer == firstNum + secondNum
+        ) {
+          console.log("add answer correct");
+          score = score + 1;
+          document.getElementById("showFeedback").innerHTML =
+            "<div class='alert alert-success'  role='alert'>Correct</div>";
+        } else if (
+          selectedMode == "Subtraction" &&
+          userAnswer == firstNum - secondNum
+        ) {
+          console.log("subtract answer correct");
+          score = score + 1;
+          document.getElementById("showFeedback").innerHTML =
+            "<div class='alert alert-success'  role='alert'>Correct</div>";
+        } else if (selectedMode == "Number Guess" && userAnswer == firstNum) {
+          console.log("guessed correctly!");
+          score = score + 1;
+          document.getElementById("showFeedback").innerHTML =
+            "<div class='alert alert-success'  role='alert'>Correct</div>";
+        } else if (selectedMode == "Multiplication") {
+          console.log("wrong answer :(");
+          document.getElementById("showFeedback").innerHTML =
+            "<div class='alert alert-warning' role='alert'>Incorrect. The correct answer is " +
+            firstNum * secondNum +
+            "</div>";
+        } else if (selectedMode == "Addition") {
+          console.log("wrong answer :(");
+          document.getElementById("showFeedback").innerHTML =
+            "<div class='alert alert-warning' role='alert'>Incorrect. The correct answer is " +
+            (firstNum + secondNum) +
+            "</div>";
+        } else if (selectedMode == "Subtraction") {
+          console.log("wrong answer :(");
+          document.getElementById("showFeedback").innerHTML =
+            "<div class='alert alert-warning' role='alert'>Incorrect. The correct answer is " +
+            (firstNum - secondNum) +
+            "</div>";
+        } else if (selectedMode == "Number Guess") {
+          console.log("wrong answer :(");
+          document.getElementById("showFeedback").innerHTML =
+            "<div class='alert alert-warning' role='alert'>Incorrect. The correct answer is " +
+            firstNum +
+            "</div>";
+        }
+        console.log(score);
+        setTimeout(newQuestion, 1000);
+      }
+    </script>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: jQuery and Bootstrap Bundle (includes Popper) -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"
+      integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+      crossorigin="anonymous"
+    ></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.min.js" integrity="sha384-+sLIOodYLS7CIrQpBjl+C7nPvqq+FbNUBDunl/OZv93DB7Ln/533i8e/mZXLi/P+" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
