@@ -24,7 +24,7 @@ def run8ball(event):
     intensity = random.randint(0, 10)
     yesOrNo = random.randint(0,1)
     
-    if yesOrNo:
+    if (random.randint(0,1)):
         reply = goodOptions[intensity]
     else:
         reply = badOptions[intensity]
