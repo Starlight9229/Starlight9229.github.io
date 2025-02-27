@@ -22,7 +22,6 @@ def run8ball(event):
     ask = asktemp.value
     intensity = random.randint(0, 10)
     yesOrNo = random.randint(0,1)
-    ask = input("Ask a yes or no question and we, The Counsil will decide\n→")
     if ask == "dev":
         print("Our almighty creator, we shall tell you our random decision: intensity: ",  intensity, ", yes or no: ", yesOrNo)
     else:
